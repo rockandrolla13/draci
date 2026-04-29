@@ -136,6 +136,7 @@ def dr_aci(
 def vs_dr_aci(
     vs_scores_seq: np.ndarray,
     true_residuals_standardized: np.ndarray,
+    true_residuals: np.ndarray | None = None,
     alpha: float = 0.1,
     gamma: float = 0.005,
     n_warmup: int = 50,
@@ -143,7 +144,7 @@ def vs_dr_aci(
     """VS-DR-ACI: DR-ACI with variance-standardized scores.
 
     ACI runs on standardized scores. Coverage is measured on standardized
-    scale. To get intervals on original scale, multiply q_hat by sigma_hat.
+    scale. Widths can be reported in original or standardized units.
 
     Parameters
     ----------
@@ -151,11 +152,14 @@ def vs_dr_aci(
         Standardized DR scores |psi^DR - tau_hat| / sigma_hat
     true_residuals_standardized : array (T,)
         |tau_true - tau_hat| / sigma_hat (standardized true residuals)
+    true_residuals : array (T,), optional
+        |tau_true - tau_hat| unstandardized. If provided, widths are reported
+        in original units by scaling q_hat by sigma_hat.
     alpha, gamma, n_warmup : see aci()
 
     Returns
     -------
-    ConformalResult (widths are in standardized units)
+    ConformalResult (widths in original units if true_residuals provided)
     """
     T = len(vs_scores_seq)
     alpha_t = alpha
