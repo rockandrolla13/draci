@@ -57,10 +57,10 @@ all = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/draci"
-Documentation = "https://github.com/yourusername/draci#readme"
-Repository = "https://github.com/yourusername/draci"
-Issues = "https://github.com/yourusername/draci/issues"
+Homepage = "https://github.com/rockandrolla13/draci"
+Documentation = "https://github.com/rockandrolla13/draci#readme"
+Repository = "https://github.com/rockandrolla13/draci"
+Issues = "https://github.com/rockandrolla13/draci/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/draci"]
